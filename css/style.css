@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Secular+One&display=swap');
+
+/* INDEX - HOME */
+
+
+/* logo */
+
+.logo {
+    text-align: center;
+}
+
+.logo__imagen {
+    width: 200px;
+}
+
+
+/* menu */
+
+.menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    list-style: none;
+    font-family: 'Secular One', sans-serif;
+    font-size: 20px;
+}
+
+.menu__lista:hover {
+    background-color: #603385;
+    color: white,
+}
+
+.menu__estilo {
+    text-decoration: none;
+    color: #B790D6;
+    padding: 20px;
+}
+
+.menu__estilo:hover {
+    color: white;
+}
+
+
+/* footer */
+
+footer {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    background-color: #B790D6;
+}
+
+
+/* carrusel */
+
+.d-block {
+    margin: 0 auto;
+}
+
+
+/* main */
+
+.parrafo {
+    text-align: center;
+    color: #B790D6;
+}
+
+.texto {
+    text-align: center;
+    color: #603385
+}
+
+
+/* boton */
+
+.boton {
+    text-align: center;
+    margin: 5px;
+}
+
+.custom-btn {
+    width: 150px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5), 7px 7px 20px 0px rgba(0, 0, 0, .1), 4px 4px 5px 0px rgba(0, 0, 0, .1);
+    outline: none;
+}
+
+.btn-2 {
+    background: #B790D6;
+    background: linear-gradient(0deg, #B790D6 0%, rgba(129, 5, 240, 1) 100%);
+    border: none;
+}
+
+.btn-2:before {
+    height: 0%;
+    width: 2px;
+}
+
+.btn-2:hover {
+    box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, .5), -4px -4px 6px 0 rgba(116, 125, 136, .5), inset -4px -4px 6px 0 rgba(255, 255, 255, .2), inset 4px 4px 6px 0 rgba(0, 0, 0, .4);
+}
+
+
+/* SHOP */
+
+.shop {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    gap: 80px;
+    margin-left: 80px;
+    margin-right: 80px;
+}
+
+
+/* CONTACTO */
+
+.formulario__contacto {
+    text-align: center;
+    width: 800px;
+}
+
+.formulario {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+
+.iconos {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 30px;
+}
+
+.locales {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    text-align: center;
+    padding: 20px;
+}
+
+.locales__sucursal {
+    color: #603385;
+}
+
+.locales__ubicacion {
+    padding: 20px;
+}

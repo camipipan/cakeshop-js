@@ -1,8 +1,9 @@
 // Clase + propiedades 
 class pasteleria {
-    constructor(id, nombre, precio){
-        this.id = id,
+    constructor(imagen,descripcion, nombre, precio){
+        this.imagen = imagen,
         this.nombre = nombre,
+        this.descripcion = descripcion,
         this.precio = precio
     }
     //Metodo
@@ -11,16 +12,41 @@ class pasteleria {
     }
 }
 //Objetos
-const torta1 = new pasteleria(1, "Lemon Pie", 2300)
-const torta2 = new pasteleria(2, "Red Velvet", 3600)
-const torta3 = new pasteleria(3,"MegaBrownie", 3080)
-const torta4 = new pasteleria(4, "Cheesecake", 2900)
-const torta5 = new pasteleria(5, "Chocotorta", 3620)
+const torta1 = new pasteleria("multimedia/alfacookies.jpg","Alfacookies", "descripcion", 2300)
+const torta2 = new pasteleria("multimedia/brownie.jpg","MegaBrownie", "descripcion", 3600)
+const torta3 = new pasteleria("multimedia/cheesecake.jpg","Cheesecake", "descripcion", 3080)
+const torta4 = new pasteleria("multimedia/chocooreo.jpg","ChocoOreo", "descripcion", 2900)
+const torta5 = new pasteleria("multimedia/chocotorta.jpg","Chocotorta", "descripcion", 3620)
 
 //Array de Objetos
 const carrito = [torta1,torta2,torta3,torta4,torta5]
-console.log(carrito)
 
+//Plantillas
+
+let divProductos = document.getElementsByClassName("card")
+function mostrarTortas(){
+
+    carrito.forEach((torta)=>{
+        let nuevoProducto = document.createElement("div")
+        nuevoProducto.innerHTML =`<div class="card " style="width: 18rem; ">
+        <img src="${torta.imagen}" class="card-img-top " alt="brownie ">
+        <div class="card-body ">
+            <h5 class="card-title ">${torta.nombre}</h5>
+            <p class="card-text ">${descripcion}</p>
+            <p class="card-text ">${precio}</p>
+            <div class="boton boton__position">
+                <button type="button" class="custom-btn btn-2">Agregar al Carrito</button>
+            </div>
+        </div>
+    </div>`
+    divProductos.appendchild(nuevoProducto)
+    })
+    let btnAgregar = document.getElementsByClassName("custom-btn")
+    btnAgregar.forEach((carritoBoton)=>{
+        carritoBoton.addEventListener("click", ()=>{console.log (`Agregado al Carrito`)})
+    })
+}
+/*
 function masTortas(){
     let nombreIngresado = prompt("Ingrese el nombre de la torta que eligió")
     let precioIngresado = parseInt(prompt("Ingrese el precio de la torta"))
@@ -65,3 +91,5 @@ let salir
 while(salir != true){
     preguntar()
 }
+*/
+

@@ -1,6 +1,7 @@
 // Clase + propiedades 
 class pasteleria {
-    constructor(imagen,descripcion, nombre, precio){
+    constructor(id, imagen, descripcion, nombre, precio){
+        this.id =id,
         this.imagen = imagen,
         this.nombre = nombre,
         this.descripcion = descripcion,
@@ -12,84 +13,86 @@ class pasteleria {
     }
 }
 //Objetos
-const torta1 = new pasteleria("multimedia/alfacookies.jpg","Alfacookies", "descripcion", 2300)
-const torta2 = new pasteleria("multimedia/brownie.jpg","MegaBrownie", "descripcion", 3600)
-const torta3 = new pasteleria("multimedia/cheesecake.jpg","Cheesecake", "descripcion", 3080)
-const torta4 = new pasteleria("multimedia/chocooreo.jpg","ChocoOreo", "descripcion", 2900)
-const torta5 = new pasteleria("multimedia/chocotorta.jpg","Chocotorta", "descripcion", 3620)
+const torta1 = new pasteleria(1,"multimedia/alfacookies.png","Alfacookies", "descripcion", 2300)
+const torta2 = new pasteleria(2,"multimedia/brownie.png","MegaBrownie", "descripcion", 3600)
+const torta3 = new pasteleria(3,"multimedia/cheesecake.png","Cheesecake", "descripcion", 3080)
+const torta4 = new pasteleria(4,"multimedia/chocooreo.png","ChocoOreo", "descripcion", 2900)
+const torta5 = new pasteleria(5,"multimedia/chocotorta.png","Chocotorta", "descripcion", 3620)
+const torta6 = new pasteleria(6,"multimedia/redvelvet.png","Red Velvet", "descripcion", 3220)
+const torta7 = new pasteleria(7,"multimedia/tortacookie.png","Torta AlfaCookie", "descripcion", 3310)
+const torta8 = new pasteleria(8,"multimedia/triplechocolate.png","Torta 100% Chocolate", "descripcion", 3580)
+
 
 //Array de Objetos
-const carrito = [torta1,torta2,torta3,torta4,torta5]
+let catalogo = []
+let carrito = []
+
+
+//Elementos DOM 
+let botonCarrito = document.getElementById("botonCarrito")
+let divProductos = document.getElementById("productos")
+divProductos.setAttribute("class", "productosEstilos")
+
+
+//Evento botonCarrito
+botonCarrito.addEventListener('click', () => {
+
+    cargarProductosCarrito(carrito)
+    
+})
+
+if(localStorage.getItem("catalogo")){
+    //array que declaramos vacio
+    catalogo = JSON.parse(localStorage.getItem("catalogo"))
+    console.log(catalogo)
+}else{
+    console.log(`primera vez que carga catalogo`)
+    catalogo.push(torta1,torta2,torta3,torta4,torta5,torta6,torta7,torta8)
+    localStorage.setItem("catalogo", JSON.stringify(catalogo))
+}
+console.log(catalogo)
+// Iniciar Array Carrito
+if(localStorage.getItem("carrito")){
+    carrito = JSON.parse(localStorage.getItem("carrito"))
+}else{
+    console.log(`primera vez`)
+    localStorage.setItem("carrito", [])
+} 
+
 
 //Plantillas
 
-let divProductos = document.getElementsByClassName("card")
 function mostrarTortas(){
-
-    carrito.forEach((torta)=>{
+divProductos.innerHTML = ""
+    catalogo.forEach((torta)=>{
         let nuevoProducto = document.createElement("div")
-        nuevoProducto.innerHTML =`<div class="card " style="width: 18rem; ">
-        <img src="${torta.imagen}" class="card-img-top " alt="brownie ">
+        nuevoProducto.innerHTML =`<div id="${torta.id} class="card " style="width: 18rem; ">
+        <img src="${torta.imagen}" class="card-img-top " alt="${torta.nombre}">
         <div class="card-body ">
             <h5 class="card-title ">${torta.nombre}</h5>
-            <p class="card-text ">${descripcion}</p>
-            <p class="card-text ">${precio}</p>
+            <p class="card-text ">${torta.descripcion}</p>
+            <p class="card-text ">${torta.precio}</p>
             <div class="boton boton__position">
-                <button type="button" class="custom-btn btn-2">Agregar al Carrito</button>
+                <button type="button" id="agregarBtn${torta.id}" class="custom-btn btn-2">Agregar al Carrito</button>
             </div>
         </div>
     </div>`
     divProductos.appendchild(nuevoProducto)
-    })
-    let btnAgregar = document.getElementsByClassName("custom-btn")
-    btnAgregar.forEach((carritoBoton)=>{
-        carritoBoton.addEventListener("click", ()=>{console.log (`Agregado al Carrito`)})
-    })
+
+    let btnAgregar = document.getElementById(`agregarBtn${torta.id}`)
+        console.log(btnAgregar);
+        //invocar agregarAlCarrito
+        btnAgregar.addEventListener("click", () =>{agregarAlCarrito(torta)})
+        })
 }
-/*
-function masTortas(){
-    let nombreIngresado = prompt("Ingrese el nombre de la torta que eligió")
-    let precioIngresado = parseInt(prompt("Ingrese el precio de la torta"))
-    let agregar = new pasteleria(carrito.length+1,nombreIngresado,precioIngresado)
-    console.log(agregar)
-    carrito.push(agregar)
+function agregarAlCarrito(torta){
+        
+    console.log(`La torta ${torta.nombre} ha sido agregado al carrito.`)
+    carrito.push(torta)
+    console.log(carrito);
+    //Cargar al storage
+    localStorage.setItem("carrito", JSON.stringify(carrito))
+    
 }
 
-function catalogo(){
-    alert("Podes ver nuestro catálogo")
-    for(let torta of carrito){
-        //console.log(torta.nombre +" "+ torta.precio)
-        torta.mostrarTortas()
-    }
-}
-function preguntar(){
-    alert("Bienvenidos a Cake Shop")
-    let opcion =parseInt(prompt(`Ingrese el numero correspondiente
-    0-Salir
-    1-Ver catálogo
-    2-Agregar una torta`))
-    menu(opcion)
-}
-function menu(opciones){
-    switch(opciones){
-        case 0:
-            salir = true
-            alert(`Gracias por visitar Cake Shop`)
-        break
-        case 1:
-            catalogo()
-        break
-        case 2:
-            masTortas()
-        break
-        default:
-            alert(`Ingrese una opción correcta`)
-    }
-}
-
-let salir
-while(salir != true){
-    preguntar()
-}
-*/
 

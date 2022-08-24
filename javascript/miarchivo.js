@@ -77,7 +77,7 @@ divProductos.innerHTML = ""
             </div>
         </div>
     </div>`
-    divProductos.appendchild(nuevoProducto)
+    divProductos.appendChild(nuevoProducto)
 
     let btnAgregar = document.getElementById(`agregarBtn${torta.id}`)
         console.log(btnAgregar);
@@ -94,5 +94,5 @@ function agregarAlCarrito(torta){
     localStorage.setItem("carrito", JSON.stringify(carrito))
     
 }
-
+mostrarTortas();
 

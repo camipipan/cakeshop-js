@@ -13,7 +13,12 @@
     width: 200px;
 }
 
-
+.carrito__icono{
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+    margin-right: 15px;
+}
 /* menu */
 
 .menu {

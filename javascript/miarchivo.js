@@ -1,10 +1,9 @@
 // Clase + propiedades 
 class pasteleria {
-    constructor(id, imagen, descripcion, nombre, precio){
+    constructor(id, imagen, nombre, precio){
         this.id =id,
         this.imagen = imagen,
         this.nombre = nombre,
-        this.descripcion = descripcion,
         this.precio = precio
     }
     //Metodo
@@ -13,14 +12,14 @@ class pasteleria {
     }
 }
 //Objetos
-const torta1 = new pasteleria(1,"multimedia/alfacookies.png","Alfacookies", "descripcion", 2300)
-const torta2 = new pasteleria(2,"multimedia/brownie.png","MegaBrownie", "descripcion", 3600)
-const torta3 = new pasteleria(3,"multimedia/cheesecake.png","Cheesecake", "descripcion", 3080)
-const torta4 = new pasteleria(4,"multimedia/chocooreo.png","ChocoOreo", "descripcion", 2900)
-const torta5 = new pasteleria(5,"multimedia/chocotorta.png","Chocotorta", "descripcion", 3620)
-const torta6 = new pasteleria(6,"multimedia/redvelvet.png","Red Velvet", "descripcion", 3220)
-const torta7 = new pasteleria(7,"multimedia/tortacookie.png","Torta AlfaCookie", "descripcion", 3310)
-const torta8 = new pasteleria(8,"multimedia/triplechocolate.png","Torta 100% Chocolate", "descripcion", 3580)
+const torta1 = new pasteleria(1,"../multimedia/alfacookies.png","Alfacookies", 2300)
+const torta2 = new pasteleria(2,"../multimedia/brownie.png","MegaBrownie", 3600)
+const torta3 = new pasteleria(3,"../multimedia/cheesecake.png","Cheesecake", 3080)
+const torta4 = new pasteleria(4,"../multimedia/chocooreo.png","ChocoOreo", 2900)
+const torta5 = new pasteleria(5,"../multimedia/chocotorta.png","Chocotorta", 3620)
+const torta6 = new pasteleria(6,"../multimedia/redvelvet.png","Red Velvet", 3220)
+const torta7 = new pasteleria(7,"../multimedia/tortacookie.png","Torta AlfaCookie", 3310)
+const torta8 = new pasteleria(8,"../multimedia/triplechocolate.png","Torta 100% Chocolate", 3580)
 
 
 //Array de Objetos
@@ -70,7 +69,6 @@ divProductos.innerHTML = ""
         <img src="${torta.imagen}" class="card-img-top " alt="${torta.nombre}">
         <div class="card-body ">
             <h5 class="card-title ">${torta.nombre}</h5>
-            <p class="card-text ">${torta.descripcion}</p>
             <p class="card-text ">${torta.precio}</p>
             <div class="boton boton__position">
                 <button type="button" id="agregarBtn${torta.id}" class="custom-btn btn-2">Agregar al Carrito</button>
